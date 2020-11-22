@@ -22,3 +22,26 @@ def won?(board)
     position_taken?(board, wincombo[0])
   end
 end
+
+def full?(board)
+  board.all? do |current_space|
+    current_space == "X" || current_space == "O"
+  end
+end
+
+def draw?(board)
+  full?(board) && !won?(board)
+end
+
+def over?(board)
+  won?(board) || full?(board)
+end
+
+def winner(board)
+  winning_array = won?(board)
+  if won?(board)
+    return board[winning_array[0]]
+  else
+    return nil
+  end
+end
